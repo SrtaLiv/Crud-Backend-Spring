@@ -2,11 +2,14 @@ package com.crudbackend.crud.controller;
 
 import com.crudbackend.crud.model.Food;
 import com.crudbackend.crud.service.FoodService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +21,9 @@ public class FoodController {
     FoodService foodService;
 
     @PostMapping
-    public ResponseEntity<Food> saveFood(@RequestBody Food food) {
+    public ResponseEntity<Food> saveFood(@RequestPart("food") Food food, @RequestPart("file") MultipartFile file) {
         try {
-            Food savedFood = foodService.save(food);
+            Food savedFood = foodService.save(food, file);
             return new ResponseEntity<>(savedFood, HttpStatus.OK);
         }
         catch (Exception e){
@@ -40,20 +43,36 @@ public class FoodController {
                 new ResponseEntity<>(HttpStatus.NOT_FOUND));    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Food> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteFood(@PathVariable Long id) throws IOException {
         Optional<Food> food = foodService.getById(id);
-        return food.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() ->
-                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        if (food.isPresent()){
+            foodService.delete(food.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping
     public ResponseEntity<Food> updateFood(Food food){
         try {
-            Food savedFood = foodService.update(food);
+            Food savedFood = foodService.updateFood(food);
             return new ResponseEntity<>(savedFood, HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("/{id}/image")
+    public ResponseEntity<Food> updateFoodImage(@PathVariable Long id,
+                                                @RequestPart("file") MultipartFile file) throws IOException {
+        Optional<Food> food = foodService.getById(id);
+        if (food.isPresent()) { //si existe
+            Food updateFood = foodService.updateFoodImage(food.get(), file);
+            return new ResponseEntity<>(updateFood, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }

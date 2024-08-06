@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
 
 @Data
 @NoArgsConstructor
@@ -15,12 +14,11 @@ public class Food {
     private Long id;
     private String name;
     private int amount;
-
     private String unit; //gr, kg..
 
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "image_id", referencedColumnName = "id")
-   // private Image image;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Imagen image;
 
 
 }
