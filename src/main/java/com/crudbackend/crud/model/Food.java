@@ -18,7 +18,7 @@ public class Food {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id", referencedColumnName = "id")
-    private Imagen image;
+    private Image image;
 
 
 }

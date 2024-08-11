@@ -14,17 +14,17 @@ import java.util.Map;
 import java.util.Objects;
 
 @Service
-public class CloudinaryService implements ICloudinaryService{
+public class CloudinaryService implements ICloudinaryService {
     private final Cloudinary cloudinary;
 
+    //CLOUDINARY_URL=cloudinary://<your_api_key>:<your_api_secret>@dsnnaq4iz
     public CloudinaryService() {
         Map<String, String> valuesMap = new HashMap<>();
-        valuesMap.put("cloud_name", "liv");
+        valuesMap.put("cloud_name", "dsnnaq4iz");
         valuesMap.put("api_key", "616712543787658");
         valuesMap.put("api_secret", "JMxfRkbkVC-ALvHnCOObE-mV5Qs");
         cloudinary = new Cloudinary(valuesMap);
     }
-
 
     @Override
     public Map upload(MultipartFile multipartFile) throws IOException {

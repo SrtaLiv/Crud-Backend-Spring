@@ -2,7 +2,6 @@ package com.crudbackend.crud.controller;
 
 import com.crudbackend.crud.model.Food;
 import com.crudbackend.crud.service.FoodService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +24,11 @@ public class FoodController {
         try {
             Food savedFood = foodService.save(food, file);
             return new ResponseEntity<>(savedFood, HttpStatus.OK);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
 
     @GetMapping
     public ResponseEntity<List<Food>> getFoods() {
@@ -40,7 +39,8 @@ public class FoodController {
     public ResponseEntity<Food> getById(@PathVariable Long id) {
         Optional<Food> foodOptional = foodService.getById(id);
         return foodOptional.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() ->
-                new ResponseEntity<>(HttpStatus.NOT_FOUND));    }
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFood(@PathVariable Long id) throws IOException {

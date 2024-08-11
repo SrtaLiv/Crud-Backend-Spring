@@ -1,7 +1,7 @@
 package com.crudbackend.crud.service;
 
 import com.crudbackend.crud.model.Food;
-import com.crudbackend.crud.model.Imagen;
+import com.crudbackend.crud.model.Image;
 import com.crudbackend.crud.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +17,9 @@ public class FoodService implements IFoodService{
 
     // MEJOR FORMA DE HACERLA:
     private final FoodRepository foodRepository;
-    private final ImagenService imagenService;
+    private final ImageService imagenService;
 
-    public FoodService(FoodRepository foodRepository, ImagenService imagenService) {
+    public FoodService(FoodRepository foodRepository, ImageService imagenService) {
         this.foodRepository = foodRepository;
         this.imagenService = imagenService;
     }
@@ -29,7 +29,7 @@ public class FoodService implements IFoodService{
     @Override
     public Food save(Food food, MultipartFile file) throws IOException {
         if (file != null && !file.isEmpty()){
-            Imagen img = imagenService.uploadImagen(file);
+            Image img = imagenService.uploadImagen(file);
             food.setImage(img);
         }
         return foodRepository.save(food);
@@ -63,7 +63,7 @@ public class FoodService implements IFoodService{
         if (food.getImage() != null){
             imagenService.deleteImagen(food.getImage());
         }
-        Imagen newImg = imagenService.uploadImagen(file);
+        Image newImg = imagenService.uploadImagen(file);
         food.setImage(newImg);
         return foodRepository.save(food);
     }

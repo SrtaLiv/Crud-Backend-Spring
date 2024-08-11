@@ -5,12 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
-
 @Data
 @NoArgsConstructor
 @Entity
-public class Imagen {
+public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +23,7 @@ public class Imagen {
     @NotBlank
     private String imageId;
 
-    public Imagen(String name, String imageUrl, String imageId) {
+    public Image(String name, String imageUrl, String imageId) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.imageId = imageId;
