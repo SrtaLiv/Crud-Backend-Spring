@@ -54,7 +54,7 @@ public class FoodController {
     }
 
     @PutMapping
-    public ResponseEntity<Food> updateFood(Food food){
+    public ResponseEntity<Food> updateFood(@RequestBody Food food){
         try {
             Food savedFood = foodService.updateFood(food);
             return new ResponseEntity<>(savedFood, HttpStatus.OK);
