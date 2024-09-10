@@ -1,6 +1,6 @@
-package com.crudbackend.crud.service;
+package com.crudbackend.savefood.service;
 
-import com.crudbackend.crud.model.Image;
+import com.crudbackend.savefood.model.Image;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

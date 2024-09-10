@@ -1,4 +1,4 @@
-package com.crudbackend.crud.service;
+package com.crudbackend.savefood.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;

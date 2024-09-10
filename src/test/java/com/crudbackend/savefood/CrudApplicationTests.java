@@ -1,4 +1,4 @@
-package com.crudbackend.crud;
+package com.crudbackend.savefood;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

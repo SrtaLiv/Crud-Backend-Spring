@@ -1,6 +1,6 @@
-package com.crudbackend.crud.service;
+package com.crudbackend.savefood.service;
 
-import com.crudbackend.crud.model.Food;
+import com.crudbackend.savefood.model.Food;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,4 +14,6 @@ public interface IFoodService {
     void delete(Food food) throws IOException;
     Food updateFood(Food food);
     Food updateFoodImage(Food food, MultipartFile file) throws IOException;
+
+    //Optional<Food> getByMeal(String meal);
 }

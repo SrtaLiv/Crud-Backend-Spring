@@ -1,8 +1,8 @@
-package com.crudbackend.crud.service;
+package com.crudbackend.savefood.service;
 
-import com.crudbackend.crud.model.Food;
-import com.crudbackend.crud.model.Image;
-import com.crudbackend.crud.repository.FoodRepository;
+import com.crudbackend.savefood.model.Food;
+import com.crudbackend.savefood.model.Image;
+import com.crudbackend.savefood.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -67,4 +67,11 @@ public class FoodService implements IFoodService{
         food.setImage(newImg);
         return foodRepository.save(food);
     }
+
+    /*
+    @Override
+    public Optional<Food> getByMeal(String meal) {
+        return foodRepository.
+    }*/
+
 }

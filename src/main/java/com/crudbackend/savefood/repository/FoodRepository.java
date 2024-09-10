@@ -1,6 +1,6 @@
-package com.crudbackend.crud.repository;
+package com.crudbackend.savefood.repository;
 
-import com.crudbackend.crud.model.Food;
+import com.crudbackend.savefood.model.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

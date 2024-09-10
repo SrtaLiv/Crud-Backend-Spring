@@ -1,4 +1,4 @@
-package com.crudbackend.crud.model;
+package com.crudbackend.savefood.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,8 +13,7 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int amount;
-    private String unit; //gr, kg..
+    private String meal;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id", referencedColumnName = "id")

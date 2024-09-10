@@ -1,7 +1,7 @@
-package com.crudbackend.crud.service;
+package com.crudbackend.savefood.service;
 
-import com.crudbackend.crud.model.Image;
-import com.crudbackend.crud.repository.ImageRepository;
+import com.crudbackend.savefood.model.Image;
+import com.crudbackend.savefood.repository.ImageRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

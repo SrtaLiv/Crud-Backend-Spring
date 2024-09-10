@@ -1,4 +1,4 @@
-package com.crudbackend.crud.model;
+package com.crudbackend.savefood.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

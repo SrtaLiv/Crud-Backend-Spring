@@ -1,7 +1,7 @@
-package com.crudbackend.crud.controller;
+package com.crudbackend.savefood.controller;
 
-import com.crudbackend.crud.model.Food;
-import com.crudbackend.crud.service.FoodService;
+import com.crudbackend.savefood.model.Food;
+import com.crudbackend.savefood.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
